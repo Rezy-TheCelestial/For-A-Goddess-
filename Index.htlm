@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Sreya</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #ffafbd, #ffc3a0);
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff3b6d;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #ff3b6d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #ff708d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hi Sreya 🌹</h1>
+    <p>Watch this rose bloom, just like my feelings for you.</p>
+    <canvas id="roseCanvas" width="400" height="400"></canvas>
+    <p>Will you be the sunshine to this rose and say yes?</p>
+    <button onclick="alert('Waiting for your answer, Sreya ❤️')">Click Me</button>
+    <script>
+        const canvas = document.getElementById('roseCanvas');
+        const ctx = canvas.getContext('2d');
+        let grow = 0;
+
+        function drawStem() {
+            ctx.fillStyle = '#3c763d';
+            ctx.fillRect(200, 400 - grow, 10, grow);
+        }
+
+        function drawRose() {
+            ctx.beginPath();
+            ctx.arc(205, 400 - grow, 20, 0, Math.PI * 2, true);
+            ctx.fillStyle = '#ff3b6d';
+            ctx.fill();
+        }
+
+        function growRose() {
+            if (grow < 300) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                grow += 2;
+                drawStem();
+                if (grow >= 300) drawRose();
+                requestAnimationFrame(growRose);
+            }
+        }
+
+        growRose();
+    </script>
+</body>
+</html>
